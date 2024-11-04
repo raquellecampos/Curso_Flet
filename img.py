@@ -3,12 +3,12 @@ import flet as ft
 def main(page: ft.Page):
     img = ft.Image(
         # src='https://th.bing.com/th/id/OIP.5hIx18FWXLCeG5rKG8II9AHaHa?rs=1&pid=ImgDetMain',
-        src='assets/img/camera.jpg',
+        src='assets/img/barbershop1',
         border_radius= ft.border_radius.horizontal(left=10, right=10),
         height=500,
         width=500,
         fit=ft.ImageFit.CONTAIN,
-        tooltip='Canon EOS 100D',
+        tooltip='Barbearia',
     )
 
     icon = ft.Icon(name=ft.icons.CAMERA, color=ft.colors.BLUE)
