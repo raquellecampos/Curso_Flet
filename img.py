@@ -24,7 +24,8 @@ def main(page: ft.Page):
             ft.MaterialState.DEFAULT: ft.colors.BLACK,
         },
         bgcolor={
-            ft.MaterialState.HOVERED: ft.colors.PINK,
+            ft.MaterialState.HOVERED: ft.colors.PINK, # TODO: Pode ser feito com o color.from_hex("#ff00ff")
+            ft.MaterialState.DEFAULT: ft.colors.AMBER,
             '': ft.colors.AMBER,
         },
         animation_duration=1000,
@@ -45,5 +46,40 @@ def main(page: ft.Page):
     texto = ft.Text(value='Contagem: 0', color=ft.colors.WHITE)
 
     page.add(btn, texto)
+
+    page.floating_action_button = ft.FloatingActionButton(
+        icon=ft.icons.DELETE,
+        tooltip='Adicionar',
+        bgcolor=ft.colors.BROWN,
+        mini=False,
+        on_click=lambda e: print('CLICADO!'), # TODO: Lambda é uma função anônima estudar sobre / pode ser também on_click=adcionar_item,
+    )
+
+    btn4 = ft.IconButton(
+        icon = ft.icons.DELETE_FOREVER_ROUNDED,
+        icon_color=ft.colors.WHITE,
+        bgcolor=ft.colors.RED,
+        tooltip='Remover',
+    )
+
+    def play_pause(e):
+        e.control.selected = not e.control.selected
+        e.control.update()
+    
+    btn5 = ft.IconButton(
+        icon=ft.icons.PLAY_ARROW,
+        selected=True,
+        selected_icon=ft.icons.PAUSE,
+        icon_size=50,
+        on_click=play_pause,
+        style=ft.ButtonStyle(
+            color={
+                ft.MaterialState.SELECTED: ft.colors.WHITE,
+                ft.MaterialState.DEFAULT: ft.colors.RED,
+            }
+        )
+    )
+
+    page.add(page.floating_action_button, btn4, btn5)
 
 ft.app(target=main, assets_dir='assets')
